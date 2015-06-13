@@ -16,7 +16,7 @@ def subdomain_selector(filtered_a_records):
            [record["name"] for record in filtered_a_records]):
         double_filtered_a_records.append([index, item])
     print("")
-    print("Please select your desired subdomain (number):")
+    print("Please select your desired A record:")
     print(tabulate(double_filtered_a_records, headers=["#", "Name"]))
     print("")
     answer = int(input("Number (#): "))
