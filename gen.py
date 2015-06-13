@@ -105,9 +105,9 @@ print("Done!\n"
 
 print("You will need to move it to a persistent PATH directory (eg. /usr/local/bin/),\n"
       "Execute this command with the root user: \n"
-      "mv \"" + script_path + "\" /usr/local/bin/cf-ddns.sh\n")
+      "\"mv \"" + script_path + "\" /usr/local/bin/cf-ddns.sh\n\"")
 
 print("You will also need to set it to be run automatically, by setting it in your crontab.\n"
       "Run \"crontab -e\" and add this line to the end:\n"
-      "*/5 * * * /usr/local/bin/cf-ddns.sh\n"
+      "'*/5 * * * /usr/local/bin/cf-ddns.sh'\n"
       "This can make your system run the script every five minutes.\n")
