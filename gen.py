@@ -4,7 +4,7 @@ By pcchou, Released under the MIT License. '''
 
 import json
 import os
-from time import time
+from time import time, sleep
 
 import requests
 from tabulate import tabulate
@@ -30,9 +30,7 @@ CF_TOKEN = str(input("Please input your CloudFlare API Token. \n"
                      "You can get yours from your CloudFlare account settings page: "
                      "https://www.cloudflare.com/a/account/my-account. \n"
                      "CloudFlare API Token: ").strip().lower())
-print("")
 CF_EMAIL = str(input("Please input your CloudFlare account e-mail: ").strip().lower())
-print("")
 CF_DOMAIN = str(input("Please input your CloudFlare target domain (not the subdomain): ").strip().lower())
 print("\n"
       "Retrieving informations...")
@@ -99,7 +97,9 @@ script_list = [
 for line in script_list:
     script.write("%s\n" % line)
 os.chmod(script_path, 0o0755)
+sleep(2)
 
+print("\n")
 print("Done!\n"
       "Script file written to \"" + script_path + "\".\n")
 
