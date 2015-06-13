@@ -100,15 +100,14 @@ for line in script_list:
     script.write("%s\n" % line)
 os.chmod(script_path, 0o0755)
 
-print("\n"
-      "Script file written to \"" + script_path + "\".\n"
-      "\n"
-      "You will need to move it to a persistent PATH directory (eg. /usr/local/bin/),\n"
+print("Done!\n"
+      "Script file written to \"" + script_path + "\".\n")
+
+print("You will need to move it to a persistent PATH directory (eg. /usr/local/bin/),\n"
       "Execute this command with the root user: \n"
-      "mv \"" + script_path + "\" /usr/local/bin/cf-ddns.sh\n"
-      "\n"
-      "You will also need to set it to be run automatically, by setting it in your crontab.\n"
+      "mv \"" + script_path + "\" /usr/local/bin/cf-ddns.sh\n")
+
+print("You will also need to set it to be run automatically, by setting it in your crontab.\n"
       "Run \"crontab -e\" and add this line to the end:\n"
       "*/5 * * * /usr/local/bin/cf-ddns.sh\n"
-      "This can make your system run the script every five minutes.\n"
-      "\n")
+      "This can make your system run the script every five minutes.\n")
