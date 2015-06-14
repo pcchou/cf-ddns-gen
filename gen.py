@@ -78,12 +78,12 @@ script_list = [
         "    echo 'Old IP file not found, creating one.'",
         "    oldip=''",
         "fi",
-        "if [ \"$ip\" == \"$oldip\"]; then",
+        "if [[ \"$ip\" == \"$oldip\" ]]; then",
         "    echo 'IP unchanged, do nothing.'",
         "else",
         "    echo 'Updated IP to '\"$ip\"'.'",
         "    echo $ip > /tmp/.cf-oldip",
-        ("    curl https://www.cloudflare.com/api_json.html"
+        ("    curl -s https://www.cloudflare.com/api_json.html"
          " -d 'a=rec_edit' -d 'type=A'"
          " -d \"content=$ip\""
          " -d 'tkn=" + CF_TOKEN + "'"
@@ -91,7 +91,8 @@ script_list = [
          " -d 'z=" + CF_DOMAIN + "'"
          " -d 'name=" + cf_name + "'"
          " -d 'id=" + cf_id + "'"
-         " -d 'ttl=" + cf_ttl + "'"),
+         " -d 'ttl=" + cf_ttl + "'"
+         "|perl -pe 's/.*\"result\":\"(.*?)\".*/$1/'"),
         "fi"]
 
 for line in script_list:
