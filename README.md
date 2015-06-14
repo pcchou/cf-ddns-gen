@@ -17,4 +17,6 @@ Usage
 2. You also need your CloudFlare API Key. Get it from [your CloudFlare account settings page](https://www.cloudflare.com/a/account/my-account).
 ![key](https://cloud.githubusercontent.com/assets/5615415/8147337/c6614b06-1297-11e5-82f5-c2096442a2a3.png)
 3. Download the `gen.py` script and run it. Please follow the descriptions.
-  `wget https://raw.githubusercontent.com/pcchou/cf-ddns-gen/master/gen.py && chmod +x gen.py && ./gen.py`
+```
+wget https://raw.githubusercontent.com/pcchou/cf-ddns-gen/master/gen.py && chmod +x gen.py && ./gen.py
+```
