@@ -10,18 +10,18 @@ import requests
 from tabulate import tabulate
 
 
-def subdomain_selector(filtered_a_records):
-    double_filtered_a_records = []
+def subdomain_selector(a_records):
+    filtered_a_records = []
     for (index, item) in enumerate(
-           [record["name"] for record in filtered_a_records]):
-        double_filtered_a_records.append([index, item])
+           [record["name"] for record in a_records]):
+        filtered_a_records.append([index, item])
     print("")
     print("Please select your desired A record:")
-    print(tabulate(double_filtered_a_records, headers=["#", "Name"]))
+    print(tabulate(filtered_a_records, headers=["#", "Name"]))
     print("")
     answer = int(input("Number (#): "))
-    if answer in [double_filtered_a_records[number][0] for number,_ in enumerate(double_filtered_a_records)]:
-        return filtered_a_records[answer]["name"], filtered_a_records[answer]["rec_id"], filtered_a_records[answer]["ttl"]
+    if answer in [filtered_a_records[number][0] for number,_ in enumerate(filtered_a_records)]:
+        return a_records[answer]["name"], a_records[answer]["rec_id"], a_records[answer]["ttl"]
     else:
         raise ValueError("Not a vaild answer.")
 
@@ -54,15 +54,10 @@ for record in parsed_list_req["response"]["recs"]["objs"]:
     if record["type"] == "A":
         a_records.append(record)
 
-filtered_a_records = []
-for item in (
-        [{key: record[key] for key in ["name", "rec_id", "ttl"]} for record in a_records]):
-    filtered_a_records.append(item)
-
 cf_id = ""
 while not cf_id:
     try:
-        cf_name, cf_id, cf_ttl = subdomain_selector(filtered_a_records)
+        cf_name, cf_id, cf_ttl = subdomain_selector(a_records)
     except ValueError:
         print("Not a vaild answer.\n")
 
